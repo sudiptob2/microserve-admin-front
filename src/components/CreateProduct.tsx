@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
-import { Card, Form, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Card, Form } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { postProduct } from '../service/productServices';
-
 export interface FormData {
   title: string;
   image: string | null | ArrayBuffer
 }
 
 const CreateProduct: React.FC = () => {
-
   const [formData, setFormData] = useState<FormData>({ title: '', image: '' });
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
   const inputRef = React.useRef<HTMLInputElement>(null); 

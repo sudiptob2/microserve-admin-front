@@ -1,10 +1,10 @@
 // import { AxiosResponse } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Table, Image, Button } from 'react-bootstrap';
+import { Button, Image, Table } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
-import { getProducts, deleteProduct } from '../service/productServices';
+import withReactContent from 'sweetalert2-react-content';
+import { deleteProduct, getProducts } from '../service/productServices';
 
 const mafSwal = withReactContent(Swal)
 export interface IProduct {

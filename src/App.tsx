@@ -1,25 +1,36 @@
-import ProductList from './components/ProductList';
-import Header from './layout/Header';
-import { Container, Row, Col } from 'react-bootstrap';
-import CreateProduct from './components/CreateProduct';
+import { ReactKeycloakProvider } from "@react-keycloak/web";
+import { Col, Container, Row } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CreateProduct from './components/CreateProduct';
+import ProductList from './components/ProductList';
+import PrivateRoute from "./helper/PrivateRoute";
+import keycloak from "./keycloak";
+import Header from './layout/Header';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-        <Header />
+      <ReactKeycloakProvider authClient={keycloak}>
+      <Header />
         <Container className="mt-5">
           <Row>
             <Col xs={12} md={8}>
-              <ProductList />
+              <PrivateRoute>
+                <ProductList />
+              </PrivateRoute>
             </Col>
             <Col xs={12} md={4}>
-              <CreateProduct />
+              <PrivateRoute>
+                <CreateProduct />
+              </PrivateRoute>
             </Col>
           </Row>
         </Container>
         <ToastContainer />
+
+      </ReactKeycloakProvider>
+
     </div>
   );
 }
