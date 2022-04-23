@@ -24,7 +24,7 @@ const ProductList: React.FC = () =>{
 
     getProducts()
     .then(res => {
-      setProducts(res.data)
+      setProducts(res.data.results)
       setIsLoading(false)
     })
     .catch(err =>{

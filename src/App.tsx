@@ -8,10 +8,17 @@ import PrivateRoute from "./helper/PrivateRoute";
 import keycloak from "./keycloak";
 import Header from './layout/Header';
 
+const tokenLogger = (tokens: any) => {
+  localStorage.setItem("token", JSON.stringify(tokens))
+}
+
 const App: React.FC = () => {
   return (
     <div className="App">
-      <ReactKeycloakProvider authClient={keycloak}>
+      <ReactKeycloakProvider authClient={keycloak}
+          onTokens={tokenLogger}
+      >
+
       <Header />
         <Container className="mt-5">
           <Row>
